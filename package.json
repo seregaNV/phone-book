@@ -1,0 +1,32 @@
+{
+  "name": "phone-book",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Creating a simple application.",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/seregaNV/phone-book.git"
+  },
+  "keywords": [
+    "AngolarJS",
+    "Phonebook"
+  ],
+  "author": "seregaNV <serega.n.v333@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/seregaNV/phone-book/issues"
+  },
+  "homepage": "https://github.com/seregaNV/phone-book#readme",
+  "dependencies": {
+    "http-server": "^0.8.5"
+  },
+  "scripts": {
+    "postinstall": "bower install",
+    "prestart": "npm install",
+    "start": "http-server -a localhost -p 3000"
+  }
+}

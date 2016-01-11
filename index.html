@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en" ng-app="phonebook">
+    <head>
+        <meta charset="utf-8">
+        <title>Angular Phonecat App</title>
+        <script type="text/javascript" src="bower_components/angular/angular.js"></script>
+        <script type="text/javascript" src="bower_components/angular-resource/angular-resource.js"></script>
+        <script type="text/javascript" src="bower_components/angular-route/angular-route.js"></script>
+        <script type="text/javascript" src="bower_components/angular-animate/angular-animate.js"></script>
+        <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+    <body ng-controller="MainCtrl">
+        <div ng-controller="PhonebookCtrl" ng-switch on = "view">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <span>Company: </span>
+                        <input type="text" ng-model = "query"></div>
+                    <div class="col-lg-6">
+                        <div class="btn-group pull-right">
+                            <button class="btn btn-default" ng-click = " view = 'list' ">
+                                <span class="glyphicon glyphicon-th-large"></span>
+                            </button>
+                            <button class="btn btn-default" ng-click = " view = 'table' ">
+                                <span class="glyphicon glyphicon-th-list"></span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div ng-switch-when="list">
+                <pb-company-card ng-repeat="company in companys | filter:query" company="company"></pb-company-card>
+            </div>
+            <div ng-switch-when="table">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Company</th>
+                            <th>Country</th>
+                            <th>Phone</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="company in companys | filter:query">
+                            <td>{{ $index + 1 }}</td>
+                            <td>{{ company.company }}</td>
+                            <td>{{ company.country }}</td>
+                            <td>{{ company.phone }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <hr>
+        <br>
+        Name: <input type="text" ng-model="name">
+        <br>
+        Hello, {{ name }}!
+        <br>
+        <button ng-click="myFunc()">Click</button>
+
+        <div ng-controller="Test1">{{ data.someData }}</div>
+        <div ng-controller="Test2">
+            <button ng-click="changeData()">Change data</button>
+        </div>
+        <br>
+        {{ 12 | currency }}
+        <br>
+        {{ 34 | number:2 }}
+        <br>
+        {{ 'MyText' | decorator:'"' }}
+        <br>
+        <div dit-my-directive></div>
+        <dit-my-directive></dit-my-directive>
+        <br>
+        <dit-user-info user="user"></dit-user-info>
+        <br>
+        <dit-user-info user="user2"></dit-user-info>
+        <script type="text/javascript" src="js/app.js"></script>
+        <script type="text/javascript" src="js/configs.js"></script>
+        <script type="text/javascript" src="js/controllers.js"></script>
+        <script type="text/javascript" src="js/filters.js"></script>
+        <script type="text/javascript" src="js/services.js"></script>
+        <script type="text/javascript" src="js/directives.js"></script>
+    </body>
+</html>
